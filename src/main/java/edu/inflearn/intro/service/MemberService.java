@@ -2,10 +2,12 @@ package edu.inflearn.intro.service;
 
 import edu.inflearn.intro.domain.Member;
 import edu.inflearn.intro.repository.MemberRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
     private final MemberRepository repository;
 
