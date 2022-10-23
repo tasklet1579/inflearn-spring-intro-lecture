@@ -1,6 +1,6 @@
 package edu.inflearn.intro;
 
-import edu.inflearn.intro.repository.JdbcMemberRepository;
+import edu.inflearn.intro.repository.JdbcTemplateMemberRepository;
 import edu.inflearn.intro.repository.MemberRepository;
 import edu.inflearn.intro.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,7 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+//        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
