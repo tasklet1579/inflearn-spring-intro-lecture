@@ -1,21 +1,19 @@
 package edu.inflearn.intro;
 
-import edu.inflearn.intro.repository.JdbcTemplateMemberRepository;
+import edu.inflearn.intro.repository.JpaMemberRepository;
 import edu.inflearn.intro.repository.MemberRepository;
 import edu.inflearn.intro.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
 
 @Configuration
 public class SpringConfig {
-    private final DataSource dataSource;
+    private final EntityManager entityManager;
 
-    @Autowired
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public SpringConfig(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Bean
@@ -27,6 +25,7 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(entityManager);
     }
 }
